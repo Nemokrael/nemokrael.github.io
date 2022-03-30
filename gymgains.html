@@ -1,0 +1,541 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Nemokrael's Gym Simulator
+	modified
+    </title>
+    <!-- bootstrap & jquery -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+    <!-- local sources -->
+    <script src="./training-calc.js"></script>
+    <!--<link rel="stylesheet" href="toga.css">-->
+</head>
+
+<body>
+    <div class="container d-flex justify-content-center">
+		<div class="row">
+			<h1 class="display-4">Nemokrael's Gym Simulator</h1>
+		</div>
+	</div>
+    <div class="container d-flex justify-content-center">
+		<div class="row">
+			<h5><small class="text-muted">very slightly modified version of <a href="https://togagymsim.z13.web.core.windows.net/">Toga's Gym Simulator</a></small></h5>
+		</div>
+	</div>
+	<div class="container pt-3">
+		<div class="card bg-light rounded-0">
+			<div class="container">
+			<div class="card-body">
+				<div class="row">
+					<label class="col-4" for="key">API Key</label>
+					<input class="col-4" type="password" id="key">
+					<label class="col-2"></label>
+					<button class="col-2 btn btn-sm btn-outline-info" onclick="onRead()">Read</button>
+				</div>
+				<hr/>
+				<div class="row mt-2">
+					<label class="col-4" for="gym">Gym</label>
+					<select class="col-4" id="gym" onChange="onGymChange()">
+						<option ept=5 str=2 spe=2 def=2 dex=2>[L] Premier Fitness</option>
+						<option ept=5 str=2.4 spe=2.4 def=2.8 dex=2.4>[L] Average Joes</option>
+						<option ept=5 str=2.8 spe=3.2 def=3 dex=2.8>[L] Woody's Workout</option>
+						<option ept=5 str=3.2 spe=3.2 def=3.2 dex=0>[L] Beach Bods</option>
+						<option ept=5 str=3.4 spe=3.6 def=3.4 dex=3.2>[L] Silver Gym</option>
+						<option ept=5 str=3.4 spe=3.6 def=3.6 dex=3.8>[L] Pour Femme</option>
+						<option ept=5 str=3.7 spe=0 def=3.7 dex=3.7>[L] Davies Den</option>
+						<option ept=5 str=4 spe=4 def=4 dex=4>[L] Global Gym</option>
+						<option ept=10 str=4.8 spe=4.4 def=4 dex=4.2>[M] Knuckle Heads</option>
+						<option ept=10 str=4.4 spe=4.6 def=4.8 dex=4.4>[M] Pioneer Fitness</option>
+						<option ept=10 str=5 spe=4.6 def=5.2 dex=4.6>[M] Anabolic Anomalies</option>
+						<option ept=10 str=5 spe=5.2 def=5 dex=5>[M] Core</option>
+						<option ept=10 str=5 spe=5.4 def=4.8 dex=5.2>[M] Racing Fitness</option>
+						<option ept=10 str=5.5 spe=5.8 def=5.5 dex=5.2>[M] Complete Cardio</option>
+						<option ept=10 str=0 spe=5.6 def=5.6 dex=5.8>[M] Legs, Bums and Tums</option>
+						<option ept=10 str=6 spe=6 def=6 dex=6>[M] Deep Burn</option>
+						<option ept=10 str=6 spe=6.2 def=6.4 dex=6.2>[H] Apollo Gym</option>
+						<option ept=10 str=6.6 spe=6.4 def=6.2 dex=6.2>[H] Gun Shop</option>
+						<option ept=10 str=6.4 spe=6.6 def=6.4 dex=6.8>[H] Force Training</option>
+						<option ept=10 str=6.4 spe=6.4 def=6.8 dex=7>[H] Cha Cha's</option>
+						<option ept=10 str=7 spe=6.4 def=6.4 dex=6.6>[H] Atlas</option>
+						<option ept=10 str=6.8 spe=6.6 def=7 dex=6.6>[H] Last Round</option>
+						<option ept=10 str=6.8 spe=7 def=7 dex=6.8>[H] The Edge</option>
+						<option ept=10 str=7.3 spe=7.3 def=7.3 dex=7.3>[H] George's</option>
+						<option ept=25 str=0 spe=0 def=7.5 dex=7.5>[S] Balboas Gym</option>
+						<option ept=25 str=7.5 spe=7.5 def=0 dex=0>[S] Frontline Fitness</option>
+						<option ept=50 str=8 spe=0 def=0 dex=0>[S] Gym 3000</option>
+						<option ept=50 str=0 spe=0 def=8 dex=0>[S] Mr. Isoyamas</option>
+						<option ept=50 str=0 spe=8 def=0 dex=0>[S] Total Rebound</option>
+						<option ept=50 str=0 spe=0 def=0 dex=8>[S] Elites</option>
+						<option ept=25 str=9 spe=9 def=9 dex=9>[S] Sports Science Lab</option>
+						<option ept=5 str=3.4 spe=3.4 def=4.6 dex=0>The Jail Gym</option>
+					</select>
+					<!-- <label class="col-1" id="dots-str">Str:</label>
+					<label class="col-1" id="dots-spe">Spe:</label>
+					<label class="col-1" id="dots-def">Def:</label>
+					<label class="col-1" id="dots-dex">Dex:</label> -->
+				</div>
+				<!-- <div class="row mt-2">
+					<label class="col-4"></label>
+					<label class="col-1" id="dots-str">Str:</label>
+					<label class="col-1" id="dots-spe">Spe:</label>
+					<label class="col-1" id="dots-def">Def:</label>
+					<label class="col-1" id="dots-dex">Dex:</label>
+				</div> -->
+				<hr/>
+				<div id="modifiers" class="row mt-2">
+					<label class="col-4"></label>
+					<label class="col-2">Strength</label>
+					<label class="col-2">Defense</label>
+					<label class="col-2">Speed</label>
+					<label class="col-2">Dexterity</label>
+				</div>
+				<div id="gymdots" class="row mt-1">
+					<label class="col-4">Gym Dots (Base)</label>
+					<label class="col-2" id="dots-str"></label>
+					<label class="col-2" id="dots-def"></label>
+					<label class="col-2" id="dots-spe"></label>
+					<label class="col-2" id="dots-dex"></label>
+				</div>
+				<div id="steadfast" class="row">
+					<label class="col-4">Faction Steadfast (%)</label>
+					<input class="col-2" type="number" min=0 max=100 step=1 id="str_steadfast" value=0>
+					<input class="col-2" type="number" min=0 max=100 step=1 id="def_steadfast" value=0>
+					<input class="col-2" type="number" min=0 max=100 step=1 id="spe_steadfast" value=0>
+					<input class="col-2" type="number" min=0 max=100 step=1 id="dex_steadfast" value=0>
+				</div>
+				<div id="property" class="row">
+					<label class="col-4">Property Perks (%)</label>
+					<input class="col-2" type="number" min=0 max=100 step=1 id="str_property" value=2>
+					<input class="col-2" type="number" min=0 max=100 step=1 id="def_property" value=2>
+					<input class="col-2" type="number" min=0 max=100 step=1 id="spe_property" value=2>
+					<input class="col-2" type="number" min=0 max=100 step=1 id="dex_property" value=2>
+				</div>
+				<div id="education_specific" class="row">
+					<label class="col-4">Education: Stat Specific (%)</label>
+					<input class="col-2" type="number" min=0 max=100 step=1 id="str_edu_spec" value=0>
+					<input class="col-2" type="number" min=0 max=100 step=1 id="def_edu_spec" value=0>
+					<input class="col-2" type="number" min=0 max=100 step=1 id="spe_edu_spec" value=0>
+					<input class="col-2" type="number" min=0 max=100 step=1 id="dex_edu_spec" value=0>
+				</div>
+				<div id="education_generic" class="row">
+					<label class="col-4">Education: General (%)</label>
+					<input class="col-2" type="number" min=0 max=100 step=1 id="str_edu_gen" value=0>
+					<input class="col-2" type="number" min=0 max=100 step=1 id="def_edu_gen" value=0>
+					<input class="col-2" type="number" min=0 max=100 step=1 id="spe_edu_gen" value=0>
+					<input class="col-2" type="number" min=0 max=100 step=1 id="dex_edu_gen" value=0>
+				</div>
+				<div id="job" class="row">
+					<label class="col-4">Job Perks (%)</label>
+					<input class="col-2" type="number" min=0 max=100 step=1 id="str_job" value=0>
+					<input class="col-2" type="number" min=0 max=100 step=1 id="def_job" value=0>
+					<input class="col-2" type="number" min=0 max=100 step=1 id="spe_job" value=0>
+					<input class="col-2" type="number" min=0 max=100 step=1 id="dex_job" value=0>
+				</div>
+				<div id="book" class="row">
+					<label class="col-4">Book Perks (%)</label>
+					<input class="col-2" type="number" min=0 max=100 step=1 id="str_book" value=0>
+					<input class="col-2" type="number" min=0 max=100 step=1 id="def_book" value=0>
+					<input class="col-2" type="number" min=0 max=100 step=1 id="spe_book" value=0>
+					<input class="col-2" type="number" min=0 max=100 step=1 id="dex_book" value=0>
+				</div>
+				<div id="energy" class="row">
+					<label class="col-4">Gym Dots x Perks</label>
+					<input class="col-2" disabled id="str_bonus">
+					<input class="col-2" disabled id="def_bonus">
+					<input class="col-2" disabled id="spe_bonus">
+					<input class="col-2" disabled id="dex_bonus">
+				</div>
+				<hr/>
+				<div class="row mt-2">
+					<label class="col-4">Jump: </label>
+					<select class="col-4" id="jumpstart" onchange="onJumpStart()">
+						<option>Select a Jump</option>
+						<option>Lollipop</option>
+						<option>Choco</option>
+						<option>Happy</option>
+					</select>
+				</div>
+				<div class="row mt-2">
+					<label class="col-4">Books: </label>
+					<select class="col-4" id="book-select" onchange="onBook()">
+						<option book=0>Select a Book</option>
+						<option book=757>Book : Get Hard Or Go Home</option>
+						<option book=758>Book : Gym Grunting - Shouting To Success</option>
+						<option book=759>Book : Self Defense In The Workplace</option>
+						<option book=760>Book : Speed 3 - The Rejected Script</option>
+						<option book=761>Book : Limbo Lovers 101</option>
+						<option book=770>Book : Ignorance Is Bliss</option>
+						<option book=782>Book : Fuelling Your Way To Failure</option>
+						<option book=783>Book : Yes Please Diabetes</option>
+						<option book=784>Book : Ugly Energy</option>
+					</select>
+				</div>
+				<div class="row mt-2">
+					<label class="col-4" for="key">Drugs / Boosters / Job Specials</label>
+					<select class="col-4" id="item" onchange="onItemSelect()">
+						<option item=0>Select an Item</option>
+					</select>
+				</div>
+				<div class="row">
+					<div class="col-4"></div>
+					<label class="col-2">Item</label>
+					<label class="col-2">Amount</label>
+					<label class="col-2">Cost</label>
+					<label class="col-2">Effects</label> 
+				</div>
+				<div id="item_container"></div>
+				<div class="row">
+					<div class="col-4"></div>
+					<div class="col-2"><hr/></div>
+					<div class="col-2"><hr/></div>
+					<div class="col-2"><hr/></div>
+					<div class="col-2"><hr/></div>
+				</div>
+				<div class="row" id="total_row">
+					<label class="col-4" for="total">Total</label>
+					<div class="col-2 text-right"></div>
+					<div class="col-2 text-right"></div>
+					<div class="col-2 text-right" id="total">$0 pj</div>
+					<div class="col-2 text-right" id="total_gain">+0H +0E</div>
+				</div>
+				<hr/>
+				<div class="row mt-2">
+					<label class="col-4" for="happy">Base Happy + Item Effects</label>
+					<input class="col-4" type="number" min=0 max=99999 id="happy" value=10000>
+				</div>
+				<div id="energy" class="row mt-2">
+					<label class="col-4">Total Energy per stat</label>
+					<input class="col-2" type="number" min=0 max=2000 step=5 id="str_erg" value=250>
+					<input class="col-2" type="number" min=0 max=2000 step=5 id="def_erg" value=500>
+					<input class="col-2" type="number" min=0 max=2000 step=5 id="spe_erg" value=250>
+					<input class="col-2" type="number" min=0 max=2000 step=5 id="dex_erg" value=0>
+				</div>
+				<hr/>
+				<div class="row mt-2">
+					<label class="col-2"></label>
+					<button class="col-8 btn btn-lg btn-info" onclick="onTrain()">Train!</button>
+				</div>
+				<hr/>
+				<div id="headers" class="row">
+					<div class="col-4"></div>
+					<label class="col-2">Strength</label>
+					<label class="col-2">Defense</label>
+					<label class="col-2">Speed</label>
+					<label class="col-2">Dexterity</label>
+				</div>
+				<div id="stats" class="row">
+					<label class="col-2">Initial Battle Stats</label>
+					<label class="col-2 text-right" id="total_stats_initial"></label>
+					<input class="col-2" lang="en-150" type="text" data-type="number" min=0 id="str_input">
+					<input class="col-2" lang="en-150" type="text" data-type="number" min=0 id="def_input">
+					<input class="col-2" lang="en-150" type="text" data-type="number" min=0 id="spe_input">
+					<input class="col-2" lang="en-150" type="text" data-type="number" min=0 id="dex_input">
+				</div>
+				<div id="stats" class="row mt-2">
+					<label class="col-2">Predicted Gains</label>
+					<label class="col-2 text-right" id="total_gains_predicted"></label>
+					<input class="col-2" disabled id="str_gains">
+					<input class="col-2" disabled id="def_gains">
+					<input class="col-2" disabled id="spe_gains">
+					<input class="col-2" disabled id="dex_gains">
+				</div>
+				<div id="stats" class="row mt-2">
+					<label class="col-2">Predicted Battle Stats</label>
+					<label class="col-2 text-right" id="total_stats_predicted"></label>
+					<input class="col-2" disabled id="str_final">
+					<input class="col-2" disabled id="def_final">
+					<input class="col-2" disabled id="spe_final">
+					<input class="col-2" disabled id="dex_final">
+				</div>
+				<div class="row mt-3">
+					<div class="col-4"></div>
+					<button onclick="onCopy()" class="col-4 btn btn-sm btn-outline-info">Copy Predicted Stats to Initial</button>
+				</div>
+			</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="card bg-light rounded-0">
+			<div class="card-header"><h3>History</h3></div>
+			<div class="card-body">
+				<div class="container" id="history-container">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container pt-4">
+		<div class="card bg-light rounded-0">
+			<div class="card-header"><h2>Instructions</h2></div>
+			<div class="card-body">
+				<div class="container" id="instructions-container">
+					<div class="row">
+						<ol>
+							<li>Pick the gym you will be training in.</li>
+							<li>Enter your API key and press "Read"</li>
+							<ul>
+								<li>Your API key is stored in your browser and is not sent to any server.</li>
+								<li>Enter or adjust training bonuses for each stat individually.</li>
+								<li>Enter your happy manually or use the calculator for common drugs and boosters.</li>
+							</ul>
+							<li>Enter the total energy you will train per stat. E.g. if you have 1000 energy stacked and are training
+								equally among all four stats, enter 250 in each cell</li>
+							<li>Press "Train!". Your predicted gains and resulting battle stats will be shown.</li>
+							<li>If you want to simulate multiple training sessions (e.g. several happy jumps), press the "Copy Predicted
+								Stats to Initial" button.</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container pt-4">
+		<div class="card bg-light rounded-0">
+			<div class="card-header"><h2>Credits</h2></div>
+			<div class="card-body">
+				<div class="container">
+					<div class="row">
+						<p>This calculator is based on <a href="https://www.torn.com/profiles.php?XID=1996140">Vladar</a>'s calculator,
+							which can be found <a
+								href="https://docs.google.com/spreadsheets/d/1krVMgZT-NKAvPFPl-gjtkJYgcy7c9Ki5S7ZuYA7EAbI/edit?usp=sharing">here</a>.
+							For more information see <a href="https://www.torn.com/forums.php#!p=threads&f=61&t=16003284&b=0&a=0">this
+								thread</a>.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container pt-4">
+		<div class="card bg-light rounded-0">
+			<div class="card-header"><h2>Known Issues</h2></div>
+			<div class="card-body">
+				<div class="container">
+					<div class="row">
+						<a href="https://www.torn.com/forums.php#/p=threads&f=67&t=16249141">Forum thread</a>
+					</div>
+					<div class="row">
+						<a href="https://www.torn.com/profiles.php?XID=2720412">Contact me about any of the following:</a>
+					</div>
+					<div class="row">
+						<ol>
+							<li>Where multiple items with the same effects are listed, the first is used for the price calculation</li>
+							<li>Not tested on all education or job perks - please contact me if you have any of these perks and
+								they
+								are not read correctly</li>
+							<li>Points market value is based on what is currently listed in the points market</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div hidden id="unused_items">
+		<div class="row" id="row527" item=527 happy=50 energy=0 candy>
+			<div class="col-4"></div>
+			<label class="col-2" for="kisses">Bag of Candy Kisses</label>
+			<input class="col-2" id="kisses" type="number" min=0 step=12 value=0 onchange="updateHappy()"></input>
+			<div class="col-2 text-right" id="price527">$0 ea</div>
+			<div class="col-2 text-right"></div>
+		</div>
+		<div class="row" id="row529" item=529 happy=100 energy=0 candy>
+			<div class="col-4"></div>
+			<label class="col-2" for="truffle">Bag of Chocolate Truffles / Reindeer Droppings</label>
+			<input class="col-2" id="truffle" type="number" min=0 step=12 value=0 onchange="updateHappy()"></input>
+			<div class="col-2 text-right" id="price529">$0 ea</div>
+			<div class="col-2 text-right"></div>
+		</div>
+		<div class="row" id="row528" item=528 happy=75 energy=0 candy>
+			<div class="col-4"></div>
+			<label class="col-2" for="kisses">Bag of Tootsie Rolls / Bloody Eyeballs</label>
+			<input class="col-2" id="kisses" type="number" min=0 step=12 value=0 onchange="updateHappy()"></input>
+			<div class="col-2 text-right" id="price528">$0 ea</div>
+			<div class="col-2 text-right"></div>
+		</div>
+		<div class="row" id="row36" item=36 happy=35 energy=0 candy>
+			<div class="col-4"></div>
+			<label class="col-2" for="choc">Big Box of Chocolates</label>
+			<input class="col-2" id="choc" type="number" min=0 step=12 value=0 onchange="updateHappy()"></input>
+			<div class="col-2 text-right" id="price36">$0 ea</div>
+			<div class="col-2 text-right"></div>
+		</div>
+		<div class="row" id="row987" item=987 happy=0 energy=15 caffeine>
+			<div class="col-4"></div>
+			<label class="col-2" for="crocozade">Can of Crocozade</label>
+			<input class="col-2" id="crocozade" type="number" min=0 value=0 onchange="updateHappy()"></input>
+			<div class="col-2 text-right" id="price987">$0 ea</div>
+			<div class="col-2 text-right"></div>
+		</div>
+		<div class="row" id="row986" item=986 happy=0 energy=10 caffeine>
+			<div class="col-4"></div>
+			<label class="col-2" for="damp">Can of Damp Valley</label>
+			<input class="col-2" id="damp" type="number" min=0 value=0 onchange="updateHappy()"></input>
+			<div class="col-2 text-right" id="price986">$0 ea</div>
+			<div class="col-2 text-right"></div>
+		</div>
+		<div class="row" id="row985" item=985 happy=0 energy=5 caffeine>
+			<div class="col-4"></div>
+			<label class="col-2" for="goose">Can of Goose Juice</label>
+			<input class="col-2" id="goose" type="number" min=0 value=0 onchange="updateHappy()"></input>
+			<div class="col-2 text-right" id="price985">$0 ea</div>
+			<div class="col-2 text-right"></div>
+		</div>
+		<div class="row" id="row530" item=530 happy=0 energy=20 caffeine>
+			<div class="col-4"></div>
+			<label class="col-2" for="munster">Can of Munster / Santa Shooters</label>
+			<input class="col-2" id="munster" type="number" min=0 value=0 onchange="updateHappy()"></input>
+			<div class="col-2 text-right" id="price530">$0 ea</div>
+			<div class="col-2 text-right"></div>
+		</div>
+		<div class="row" id="row532" item=532 happy=0 energy=25 caffeine>
+			<div class="col-4"></div>
+			<label class="col-2" for="cow">Can of Red Cow / Rockstar Rudolph</label>
+			<input class="col-2" id="cow" type="number" min=0 value=0 onchange="updateHappy()"></input>
+			<div class="col-2 text-right" id="price532">$0 ea</div>
+			<div class="col-2 text-right"></div>
+		</div>
+		<div class="row" id="row533" item=533 happy=0 energy=30 caffeine>
+			<div class="col-4"></div>
+			<label class="col-2" for="Taurine">Can of Taurine Elite / X-MASS</label>
+			<input class="col-2" id="Taurine" type="number" min=0 value=0 onchange="updateHappy()"></input>
+			<div class="col-2 text-right" id="price533">$0 ea</div>
+			<div class="col-2 text-right"></div>
+		</div>
+		<div class="row" id="row197" item=197 happy=0 energy=0>
+			<!-- special case, doubles happy -->
+			<div class="col-4"></div>
+			<label class="col-2" for="ecstasy">Ecstasy</label>
+			<input class="col-2" id="ecstasy" type="number" min=0 max=1 value=0 onchange="updateHappy()"></input>
+			<div class="col-2 text-right" id="price197">$0 ea</div>
+			<div class="col-2 text-right"></div>
+		</div>
+		<div class="row" id="row366" item=366 happy=2500 energy=0>
+			<div class="col-4"></div>
+			<label class="col-2" for="edvd">Erotic DVD</label>
+			<input class="col-2" id="edvd" type="number" min=0 step=1 value=0 onchange="updateHappy()"></input>
+			<div class="col-2 text-right" id="price366">$0 ea</div>
+			<div class="col-2 text-right"></div>
+		</div>
+		<div class="row" id="row367" item=367 happy=500 energy=150>
+			<div class="col-4"></div>
+			<label class="col-2" for="fhc">Feathery Hotel Coupon</label>
+			<input class="col-2" id="fhc" type="number" min=0 step=1 value=0 onchange="updateHappy()"></input>
+			<div class="col-2 text-right" id="price367">$0 ea</div>
+			<div class="col-2 text-right"></div>
+		</div>
+		<div class="row" id="row310" item=310 happy=25 energy=0 candy>
+			<div class="col-4"></div>
+			<label class="col-2" for="lollipop">Lollipop</label>
+			<input class="col-2" id="lollipop" type="number" min=0 step=12 value=0 onchange="updateHappy()"></input>
+			<div class="col-2 text-right" id="price310">$0 ea</div>
+			<div class="col-2 text-right"></div>
+		</div>
+		<div class="row" id="row199" item=199 happy=350 energy=50>
+			<div class="col-4"></div>
+			<label class="col-2" for="lsd">LSD</label>
+			<input class="col-2" id="lsd" type="number" min=0 max=1 step=1 value=0 onchange="updateHappy()"></input>
+			<div class="col-2 text-right" id="price199">$0 ea</div>
+			<div class="col-2 text-right"></div>
+		</div>
+		<div class="row" id="row151" item=151 happy=150 energy=0 candy>
+			<div class="col-4"></div>
+			<label class="col-2" for="pixie">Pixie Sticks</label>
+			<input class="col-2" id="pixie" type="number" min=0 step=12 value=0 onchange="updateHappy()"></input>
+			<div class="col-2 text-right" id="price151">$0 ea</div>
+			<div class="col-2 text-right"></div>
+		</div>
+		<div class="row" id="row1" item=1 happy=0 energy=6>
+			<div class="col-4"></div>
+			<label class="col-2" for="points">Points Refill</label>
+			<input class="col-2" id="points" type="number" min=0 step=25 max=25 value=0 onchange="updateHappy()"></input>
+			<div class="col-2 text-right" id="price1">$0 ea</div>
+			<div class="col-2 text-right"></div>
+		</div>
+		<div class="row" id="row206" item=206 happy=0 energy=250>
+			<div class="col-4"></div>
+			<label class="col-2" for="xanax">Xanax</label>
+			<input class="col-2" id="xanax" type="number" min=0 step=1 value=0 onchange="updateHappy()"></input>
+			<div class="col-2 text-right" id="price206">$0 ea</div>
+			<div class="col-2 text-right"></div>
+		</div>
+	</div>
+	<div hidden id="unused_specials">
+		<div class="row" id="rowsweet_tooth" item="sweet_tooth" company=14 happy=50 energy=0 jp=1>
+			<div class="col-4"></div>
+			<label class="col-2" for="sweet_tooth">Sweet Tooth</label>
+			<input class="col-2" id="sweet_tooth" type="number" min=0 step=1 value=0 onchange="updateHappy()"></input>
+			<div class="col-2 text-right" id="jp_sweet_tooth">1JP ea</div>
+			<div class="col-2 text-right"></div>
+		</div>
+		<div class="row" id="rowmemory_lane" item="memory_lane" company=9 happy=50 energy=0 jp=1>
+			<div class="col-4"></div>
+			<label class="col-2" for="memory_lane">Memory Lane</label>
+			<input class="col-2" id="memory_lane" type="number" min=0 step=1 value=0 onchange="updateHappy()"></input>
+			<div class="col-2 text-right" id="jp_memory_lane">1JP ea</div>
+			<div class="col-2 text-right"></div>
+		</div>
+		<div class="row" id="rowgluttony" item="gluttony" company=14 happy=1000 energy=0 jp=10>
+			<div class="col-4"></div>
+			<label class="col-2" for="gluttony">Gluttony</label>
+			<input class="col-2" id="gluttony" type="number" min=0 step=1 value=0 onchange="updateHappy()"></input>
+			<div class="col-2 text-right" id="jp_gluttony">10JP ea</div>
+			<div class="col-2 text-right"></div>
+		</div>
+		<div class="row" id="rowvoracious" item="voracious" company=14 happy=4500 energy=0 jp=30>
+			<div class="col-4"></div>
+			<label class="col-2" for="voracious">Voracious</label>
+			<input class="col-2" id="voracious" type="number" min=0 step=1 value=0 onchange="updateHappy()"></input>
+			<div class="col-2 text-right" id="jp_voracious">30JP ea</div>
+			<div class="col-2 text-right"></div>
+		</div>
+		<div class="row" id="rowwarming_therapy" item="warming_therapy" company=8 happy=50 energy=0 jp=1>
+			<div class="col-4"></div>
+			<label class="col-2" for="warming_therapy">Warming Therapy</label>
+			<input class="col-2" id="warming_therapy" type="number" min=0 step=1 value=0 onchange="updateHappy()"></input>
+			<div class="col-2 text-right" id="jp_warming_therapy">1JP ea</div>
+			<div class="col-2 text-right"></div>
+		</div>
+		<div class="row" id="rowreinvigorating_therapy" item="reinvigorating_therapy" company=8 happy=0 energy=5 jp=1>
+			<div class="col-4"></div>
+			<label class="col-2" for="reinvigorating_therapy">Reinvigorating Therapy</label>
+			<input class="col-2" id="reinvigorating_therapy" type="number" min=0 step=1 value=0 onchange="updateHappy()"></input>
+			<div class="col-2 text-right" id="jp_reinvigorating_therapy">1JP ea</div>
+			<div class="col-2 text-right"></div>
+		</div>
+		<div class="row" id="rowambience" item="ambience" company=23 happy=50 energy=0 jp=1>
+			<div class="col-4"></div>
+			<label class="col-2" for="ambience">Ambience</label>
+			<input class="col-2" id="ambience" type="number" min=0 step=1 value=0 onchange="updateHappy()"></input>
+			<div class="col-2 text-right" id="jp_ambience">1JP ea</div>
+			<div class="col-2 text-right"></div>
+		</div>
+	</div>
+	<div hidden id="unused_stock_benefits">
+		<div class="row" id="rowmcs" item="mcs" stock=29 happy=0 energy=100 jp=1>
+			<div class="col-4"></div>
+			<label class="col-2" for="mcs">MCS Stock</label>
+			<input class="col-2" id="mcs" type="number" min=0 step=1 value=0 onchange="updateHappy()"></input>
+			<div class="col-2 text-right" id="jp_mcs">1 payout ea</div>
+			<div class="col-2 text-right"></div>
+		</div>
+		<div class="row" id="rowevl" item="evl" stock=28 happy=1000 energy=0 jp=1>
+			<div class="col-4"></div>
+			<label class="col-2" for="evl">EVL Stock</label>
+			<input class="col-2" id="evl" type="number" min=0 step=1 value=0 onchange="updateHappy()"></input>
+			<div class="col-2 text-right" id="jp_evl">1 payout ea</div>
+			<div class="col-2 text-right"></div>
+		</div>
+	</div>
+</body>
+
+</html>
