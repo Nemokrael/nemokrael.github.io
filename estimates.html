@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS (CDN) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap JS Bundle (Popper included) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+
+    <!-- Custom page styles -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+      }
+
+      body {
+        background-color: #303030 !important;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 2rem 0;
+        color: #f0f0f0;
+        font-size: 12px;
+        min-height: 100vh;
+      }
+
+      /* Centered wrapper with a max width */
+      .table-wrap {
+        width: 100%;
+        max-width: 80%;
+        margin: 0 auto; /* Center the wrapper */
+      }
+
+      /* Apply lime text color to header cells and center header text */
+      table th {
+        color: #00ff00;
+        text-align: center;
+      }
+
+      /* Slim border for the table */
+      table {
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-collapse: collapse;
+        width: 100%; /* Ensure table takes full width of wrapper */
+      }
+
+      table td,
+      table th {
+        border: 1px solid rgba(255, 255, 255, 0.15);
+      }
+      th {
+        user-select: none;
+        position: relative;
+      }
+
+      /* stronger selector to override Bootstrap default styles */
+      table.table th.sorted-asc::after,
+      table.table th.sorted-desc::after {
+        font-size: 1rem;
+        margin-left: 0.5rem;
+        color: #ffc107;
+        font-weight: bold;
+      }
+
+      table.table th.sorted-asc::after { content: "▲"; }
+      table.table th.sorted-desc::after { content: "▼"; }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+          <div class="table-wrap">
+            <table class="table table-dark table-striped table-sm sortable">
+              <thead>
+              <tr>
+                <th width="130px">Name</th>
+                  <th width="70px">ID</th>
+                  <th width="50px">Level</th>
+                  <th width="120px">Estimate</th>
+                  <th width="50px">Attack Link</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Irix</td>
+                  <td class="text-end">24780</td>
+                  <td class="text-end">100</td>
+                  <td class="text-end">17,666,836,263</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=24780">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>minamimoto</td>
+                  <td class="text-end">1159022</td>
+                  <td class="text-end">100</td>
+                  <td class="text-end">13,429,075,215</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=1159022">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Halflernation</td>
+                  <td class="text-end">847751</td>
+                  <td class="text-end">100</td>
+                  <td class="text-end">12,927,104,955</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=847751">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>YELENA</td>
+                  <td class="text-end">375942</td>
+                  <td class="text-end">100</td>
+                  <td class="text-end">12,667,420,996</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=375942">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>bekoe</td>
+                  <td class="text-end">439563</td>
+                  <td class="text-end">100</td>
+                  <td class="text-end">11,812,559,850</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=439563">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>cuinhel</td>
+                  <td class="text-end">160655</td>
+                  <td class="text-end">100</td>
+                  <td class="text-end">11,130,516,547</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=160655">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Juventus</td>
+                  <td class="text-end">853616</td>
+                  <td class="text-end">100</td>
+                  <td class="text-end">9,802,012,279</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=853616">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Zenox</td>
+                  <td class="text-end">869599</td>
+                  <td class="text-end">100</td>
+                  <td class="text-end">9,678,017,047</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=869599">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Crawdacity</td>
+                  <td class="text-end">21208</td>
+                  <td class="text-end">100</td>
+                  <td class="text-end">9,650,347,109</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=21208">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Nyepi</td>
+                  <td class="text-end">2177511</td>
+                  <td class="text-end">100</td>
+                  <td class="text-end">9,465,206,400</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=2177511">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Jem</td>
+                  <td class="text-end">2135013</td>
+                  <td class="text-end">100</td>
+                  <td class="text-end">8,811,269,033</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=2135013">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Ultima</td>
+                  <td class="text-end">266863</td>
+                  <td class="text-end">50</td>
+                  <td class="text-end">8,161,378,572</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=266863">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>GULENG</td>
+                  <td class="text-end">318025</td>
+                  <td class="text-end">100</td>
+                  <td class="text-end">7,707,947,624</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=318025">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Alascato</td>
+                  <td class="text-end">2323855</td>
+                  <td class="text-end">99</td>
+                  <td class="text-end">7,506,664,591</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=2323855">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>sopwithcamel74</td>
+                  <td class="text-end">2199693</td>
+                  <td class="text-end">100</td>
+                  <td class="text-end">6,874,415,812</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=2199693">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>WH0</td>
+                  <td class="text-end">1541591</td>
+                  <td class="text-end">100</td>
+                  <td class="text-end">6,487,107,601</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=1541591">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Five</td>
+                  <td class="text-end">959585</td>
+                  <td class="text-end">100</td>
+                  <td class="text-end">6,447,004,466</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=959585">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>84t0n9</td>
+                  <td class="text-end">315131</td>
+                  <td class="text-end">100</td>
+                  <td class="text-end">6,203,614,063</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=315131">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>abgbotak</td>
+                  <td class="text-end">420212</td>
+                  <td class="text-end">25</td>
+                  <td class="text-end">6,012,811,306</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=420212">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Bastid</td>
+                  <td class="text-end">1884498</td>
+                  <td class="text-end">100</td>
+                  <td class="text-end">5,833,164,131</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=1884498">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>CyPrinZe</td>
+                  <td class="text-end">2660499</td>
+                  <td class="text-end">100</td>
+                  <td class="text-end">5,375,870,981</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=2660499">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>mrmurmur</td>
+                  <td class="text-end">2329877</td>
+                  <td class="text-end">100</td>
+                  <td class="text-end">5,352,716,535</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=2329877">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>SaintKrauss</td>
+                  <td class="text-end">2012719</td>
+                  <td class="text-end">100</td>
+                  <td class="text-end">5,342,797,850</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=2012719">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>mashkoor</td>
+                  <td class="text-end">1078273</td>
+                  <td class="text-end">100</td>
+                  <td class="text-end">5,315,996,426</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=1078273">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Charlton</td>
+                  <td class="text-end">204040</td>
+                  <td class="text-end">100</td>
+                  <td class="text-end">5,227,439,994</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=204040">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>RegulusJ</td>
+                  <td class="text-end">2324184</td>
+                  <td class="text-end">100</td>
+                  <td class="text-end">5,225,375,677</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=2324184">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Flatnose</td>
+                  <td class="text-end">920311</td>
+                  <td class="text-end">100</td>
+                  <td class="text-end">5,213,661,037</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=920311">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Pelymeny</td>
+                  <td class="text-end">1049343</td>
+                  <td class="text-end">100</td>
+                  <td class="text-end">4,697,941,363</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=1049343">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Dag</td>
+                  <td class="text-end">979420</td>
+                  <td class="text-end">100</td>
+                  <td class="text-end">4,450,763,348</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=979420">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Mekt</td>
+                  <td class="text-end">2699435</td>
+                  <td class="text-end">95</td>
+                  <td class="text-end">4,196,314,139</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=2699435">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>SkaRn</td>
+                  <td class="text-end">76981</td>
+                  <td class="text-end">100</td>
+                  <td class="text-end">4,097,284,141</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=76981">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>TrevorSentMe</td>
+                  <td class="text-end">511200</td>
+                  <td class="text-end">99</td>
+                  <td class="text-end">3,988,480,272</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=511200">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>flaviotobi</td>
+                  <td class="text-end">2598073</td>
+                  <td class="text-end">96</td>
+                  <td class="text-end">3,542,853,554</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=2598073">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Ro55</td>
+                  <td class="text-end">2501611</td>
+                  <td class="text-end">69</td>
+                  <td class="text-end">3,519,098,856</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=2501611">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>giube</td>
+                  <td class="text-end">308796</td>
+                  <td class="text-end">96</td>
+                  <td class="text-end">3,479,464,687</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=308796">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>TESV</td>
+                  <td class="text-end">2597103</td>
+                  <td class="text-end">96</td>
+                  <td class="text-end">3,418,078,811</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=2597103">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Forewarned</td>
+                  <td class="text-end">433007</td>
+                  <td class="text-end">93</td>
+                  <td class="text-end">3,345,431,827</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=433007">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>MaSon_Uk</td>
+                  <td class="text-end">247605</td>
+                  <td class="text-end">99</td>
+                  <td class="text-end">3,163,470,187</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=247605">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>SharpSplinter</td>
+                  <td class="text-end">351311</td>
+                  <td class="text-end">95</td>
+                  <td class="text-end">3,027,812,163</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=351311">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Jombie</td>
+                  <td class="text-end">432599</td>
+                  <td class="text-end">98</td>
+                  <td class="text-end">2,971,123,012</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=432599">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Angelsman</td>
+                  <td class="text-end">319602</td>
+                  <td class="text-end">90</td>
+                  <td class="text-end">2,829,926,212</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=319602">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Tsu</td>
+                  <td class="text-end">2690268</td>
+                  <td class="text-end">90</td>
+                  <td class="text-end">2,820,819,456</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=2690268">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>XeQtEr</td>
+                  <td class="text-end">2712243</td>
+                  <td class="text-end">15</td>
+                  <td class="text-end">2,651,209,704</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=2712243">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Larold</td>
+                  <td class="text-end">2304383</td>
+                  <td class="text-end">100</td>
+                  <td class="text-end">2,391,320,206</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=2304383">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Max2020</td>
+                  <td class="text-end">2609161</td>
+                  <td class="text-end">94</td>
+                  <td class="text-end">2,258,519,329</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=2609161">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Burgertime</td>
+                  <td class="text-end">1336371</td>
+                  <td class="text-end">100</td>
+                  <td class="text-end">2,161,491,198</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=1336371">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>-Beau-</td>
+                  <td class="text-end">2911585</td>
+                  <td class="text-end">89</td>
+                  <td class="text-end">1,786,826,600</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=2911585">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>benjani</td>
+                  <td class="text-end">347410</td>
+                  <td class="text-end">80</td>
+                  <td class="text-end">1,638,555,619</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=347410">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>stewart_1322</td>
+                  <td class="text-end">180991</td>
+                  <td class="text-end">98</td>
+                  <td class="text-end">1,318,794,984</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=180991">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Tokuchi</td>
+                  <td class="text-end">2664658</td>
+                  <td class="text-end">80</td>
+                  <td class="text-end">1,263,502,116</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=2664658">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Soggypotatoes</td>
+                  <td class="text-end">2494604</td>
+                  <td class="text-end">80</td>
+                  <td class="text-end">1,206,309,839</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=2494604">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>MMTC</td>
+                  <td class="text-end">442754</td>
+                  <td class="text-end">60</td>
+                  <td class="text-end">899,760,142</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=442754">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Alterend</td>
+                  <td class="text-end">2759312</td>
+                  <td class="text-end">83</td>
+                  <td class="text-end">781,531,472</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=2759312">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Faze</td>
+                  <td class="text-end">2780456</td>
+                  <td class="text-end">69</td>
+                  <td class="text-end">610,526,219</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=2780456">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>TommyVercetti</td>
+                  <td class="text-end">2545337</td>
+                  <td class="text-end">15</td>
+                  <td class="text-end">530,039,328</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=2545337">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Geegox</td>
+                  <td class="text-end">3155545</td>
+                  <td class="text-end">74</td>
+                  <td class="text-end">306,744,127</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=3155545">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Holy</td>
+                  <td class="text-end">3535002</td>
+                  <td class="text-end">68</td>
+                  <td class="text-end">232,178,359</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=3535002">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>SoulDegen</td>
+                  <td class="text-end">3144254</td>
+                  <td class="text-end">88</td>
+                  <td class="text-end">130,445,952</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=3144254">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>hijoprodigo</td>
+                  <td class="text-end">2892601</td>
+                  <td class="text-end">62</td>
+                  <td class="text-end">115,086,276</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=2892601">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>a1ry</td>
+                  <td class="text-end">3583932</td>
+                  <td class="text-end">60</td>
+                  <td class="text-end">71,008,256</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=3583932">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>CocoFelon</td>
+                  <td class="text-end">3301342</td>
+                  <td class="text-end">66</td>
+                  <td class="text-end">46,588,099</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=3301342">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>GraveStrider</td>
+                  <td class="text-end">3385071</td>
+                  <td class="text-end">51</td>
+                  <td class="text-end">39,797,260</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=3385071">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>R34P3R6666</td>
+                  <td class="text-end">3765920</td>
+                  <td class="text-end">47</td>
+                  <td class="text-end">36,134,936</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=3765920">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Ryan0427</td>
+                  <td class="text-end">3169251</td>
+                  <td class="text-end">59</td>
+                  <td class="text-end">21,097,457</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=3169251">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Coyote19</td>
+                  <td class="text-end">2748683</td>
+                  <td class="text-end">52</td>
+                  <td class="text-end">16,669,133</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=2748683">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>pif</td>
+                  <td class="text-end">3026499</td>
+                  <td class="text-end">54</td>
+                  <td class="text-end">16,669,133</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=3026499">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>graywolf13</td>
+                  <td class="text-end">2987807</td>
+                  <td class="text-end">50</td>
+                  <td class="text-end">11,005,290</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=2987807">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Supersheepie</td>
+                  <td class="text-end">4009267</td>
+                  <td class="text-end">39</td>
+                  <td class="text-end">6,032,907</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=4009267">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>smk47</td>
+                  <td class="text-end">3485404</td>
+                  <td class="text-end">43</td>
+                  <td class="text-end">5,525,546</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=3485404">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Mood</td>
+                  <td class="text-end">3524714</td>
+                  <td class="text-end">43</td>
+                  <td class="text-end">3,750,449</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=3524714">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Emma_Watson_</td>
+                  <td class="text-end">3862240</td>
+                  <td class="text-end">39</td>
+                  <td class="text-end">2,238,173</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=3862240">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>diabeeetus</td>
+                  <td class="text-end">3695479</td>
+                  <td class="text-end">50</td>
+                  <td class="text-end">1,874,399</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=3695479">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>SassySunny</td>
+                  <td class="text-end">3424452</td>
+                  <td class="text-end">50</td>
+                  <td class="text-end">1,482,662</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=3424452">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>BoaBear</td>
+                  <td class="text-end">3688439</td>
+                  <td class="text-end">45</td>
+                  <td class="text-end">1,350,399</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=3688439">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Grazenburg</td>
+                  <td class="text-end">3672752</td>
+                  <td class="text-end">39</td>
+                  <td class="text-end">968,474</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=3672752">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>SwivelDice2511</td>
+                  <td class="text-end">2790448</td>
+                  <td class="text-end">43</td>
+                  <td class="text-end">954,475</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=2790448">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>NANOO</td>
+                  <td class="text-end">3797288</td>
+                  <td class="text-end">44</td>
+                  <td class="text-end">659,789</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=3797288">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>WalkMode</td>
+                  <td class="text-end">4014975</td>
+                  <td class="text-end">29</td>
+                  <td class="text-end">515,441</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=4014975">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>_-Dyra-_</td>
+                  <td class="text-end">4012925</td>
+                  <td class="text-end">31</td>
+                  <td class="text-end">454,398</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=4012925">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>SirJury</td>
+                  <td class="text-end">4014949</td>
+                  <td class="text-end">26</td>
+                  <td class="text-end">406,900</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=4014949">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>DANNOLAD</td>
+                  <td class="text-end">4030092</td>
+                  <td class="text-end">27</td>
+                  <td class="text-end">406,900</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=4030092">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Tricknasty69420</td>
+                  <td class="text-end">3987326</td>
+                  <td class="text-end">26</td>
+                  <td class="text-end">241,116</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=3987326">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>Gonalito</td>
+                  <td class="text-end">4000454</td>
+                  <td class="text-end">16</td>
+                  <td class="text-end">237,624</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=4000454">Attack</a></td>
+                </tr>
+                <tr>
+                  <td>TreeBark</td>
+                  <td class="text-end">3667849</td>
+                  <td class="text-end">29</td>
+                  <td class="text-end">203,179</td>
+                  <td class="text-center"><a href="https://www.torn.com/loader.php?sid=attack&user2ID=3667849">Attack</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const table = document.querySelector('table.table');
+      if (!table) return;
+
+      const thead = table.tHead;
+      const tbody = table.tBodies[0];
+      if (!thead || !tbody) return;
+
+      const headers = Array.from(thead.querySelectorAll('th'));
+      const sortDirections = headers.map(() => 1);
+
+      function normalizeCell(cell) {
+        const text = cell.textContent.trim();
+        const number = Number(text.replace(/,/g, ''));
+        return text === '' ? '' : !isNaN(number) ? number : text.toLowerCase();
+      }
+
+      function compareCells(a, b) {
+        if (a === b) return 0;
+        if (typeof a === 'number' && typeof b === 'number') return a - b;
+        return a < b ? -1 : 1;
+      }
+
+      headers.forEach((header, index) => {
+        header.style.cursor = 'pointer';
+        header.addEventListener('click', function () {
+          const rows = Array.from(tbody.querySelectorAll('tr'));
+          const direction = sortDirections[index];
+
+          rows.sort((rowA, rowB) => {
+            const cellA = normalizeCell(rowA.cells[index]);
+            const cellB = normalizeCell(rowB.cells[index]);
+            return compareCells(cellA, cellB) * direction;
+          });
+
+          rows.forEach((row) => tbody.appendChild(row));
+          sortDirections[index] = -direction;
+
+          headers.forEach((h, i) => {
+            h.classList.toggle('sorted-asc', i === index && direction === 1);
+            h.classList.toggle('sorted-desc', i === index && direction === -1);
+          });
+        });
+      });
+    });
+  </script>
+  </body>
+</html>
