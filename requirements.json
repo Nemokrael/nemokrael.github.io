@@ -16,38 +16,38 @@
       "min_cpr": 50
     },
     "Sniper": {
-      "min_cpr": 50
+      "min_cpr": 55
     }
   },
   "Gone Fission": {
     "Bomber": {
-      "min_cpr": 60
+      "min_cpr": 55
     },
     "Hijacker": {
-      "min_cpr": 60
+      "min_cpr": 55
     },
     "Engineer": {
-      "min_cpr": 60
+      "min_cpr": 55
     },
     "Imitator": {
-      "min_cpr": 60
+      "min_cpr": 55
     },
     "Pickpocket": {
-      "min_cpr": 50
+      "min_cpr": 55
     }
   },
   "Ace in the Hole": {
     "Hacker": {
-      "min_cpr": 60
+      "min_cpr": 55
     },
     "Imitator": {
-      "min_cpr": 60
+      "min_cpr": 55
     },
     "Muscle #2": {
-      "min_cpr": 60
+      "min_cpr": 55
     },
     "Muscle #1": {
-      "min_cpr": 60
+      "min_cpr": 55
     },
     "Driver": {
       "min_cpr": 50
@@ -55,7 +55,7 @@
   },
   "Stacking the Deck": {
     "Imitator": {
-      "min_cpr": 60
+      "min_cpr": 65
     },
     "Hacker": {
       "min_cpr": 60
@@ -64,41 +64,55 @@
       "min_cpr": 60
     },
     "Driver": {
-      "min_cpr": 50
+      "min_cpr": 55
     }
   },
   "Clinical Precision": {
     "Imitator": {
-      "min_cpr": 60
+      "min_cpr": 70
     },
     "Cleaner": {
+      "min_cpr": 65
+    },
+    "Cat Burglar": {
+      "min_cpr": 65
+    },
+    "Assassin": {
+      "min_cpr": 65
+    }
+  },
+  "Manifest Cruelty": {
+    "Interrogator": {
+      "min_cpr": 60
+    },
+    "Hacker": {
       "min_cpr": 60
     },
     "Cat Burglar": {
       "min_cpr": 60
     },
-    "Assassin": {
-      "min_cpr": 60
+    "Reviver": {
+      "min_cpr": 55
     }
   },
   "Break the Bank": {
     "Muscle #3": {
-      "min_cpr": 60
+      "min_cpr": 70
     },
     "Thief #2": {
-      "min_cpr": 60
+      "min_cpr": 70
     },
     "Muscle #1": {
-      "min_cpr": 60
+      "min_cpr": 65
     },
     "Robber": {
-      "min_cpr": 60
+      "min_cpr": 65
     },
     "Muscle #2": {
-      "min_cpr": 60
+      "min_cpr": 65
     },
     "Thief #1": {
-      "min_cpr": 60
+      "min_cpr": 65
     }
   },
   "Blast from the Past": {
@@ -109,196 +123,72 @@
       "min_cpr": 70
     },
     "Bomber": {
-      "min_cpr": 70
+      "min_cpr": 65
     },
     "Picklock #1": {
-      "min_cpr": 70
+      "min_cpr": 65
     },
     "Hacker": {
-      "min_cpr": 70
+      "min_cpr": 65
     },
     "Picklock #2": {
-      "min_cpr": 70
+      "min_cpr": 65
     }
   },
   "Honey Trap": {
     "Muscle #2": {
-      "min_cpr": 70
+      "min_cpr": 65
     },
     "Muscle #1": {
-      "min_cpr": 70
+      "min_cpr": 65
     },
     "Enforcer": {
-      "min_cpr": 70
+      "min_cpr": 65
     }
   },
   "Bidding War": {
     "Robber #3": {
-      "min_cpr": 70
+      "min_cpr": 65
     },
     "Robber #2": {
-      "min_cpr": 70
+      "min_cpr": 65
     },
     "Bomber #2": {
-      "min_cpr": 70
+      "min_cpr": 65
     },
     "Driver": {
-      "min_cpr": 70
+      "min_cpr": 65
     },
     "Bomber #1": {
-      "min_cpr": 70
+      "min_cpr": 65
     },
     "Robber #1": {
-      "min_cpr": 70
+      "min_cpr": 65
     }
   },
   "Leave No Trace": {
     "Imitator": {
-      "min_cpr": 70
+      "min_cpr": 65
     },
     "Negotiator": {
-      "min_cpr": 70
+      "min_cpr": 65
     },
     "Techie": {
-      "min_cpr": 70
+      "min_cpr": 65
     }
   },
-  "Counter Offer": {
-    "Robber": {
-      "min_cpr": 70
+  "Sneaky Git Grab": {
+    "Imitator": {
+      "min_cpr": 65
     },
-    "Engineer": {
-      "min_cpr": 70
-    },
-    "Picklock": {
-      "min_cpr": 70
+    "Pickpocket": {
+      "min_cpr": 65
     },
     "Hacker": {
-      "min_cpr": 70
-    },
-    "Looter": {
-      "min_cpr": 70
+      "min_cpr": 65
     }
-  },
-  "No Reserve": {
     "Techie": {
-      "min_cpr": 70
-    },
-    "Engineer": {
-      "min_cpr": 70
-    },
-    "Car Thief": {
-      "min_cpr": 70
-    }
-  },
-  "Stage Fright": {
-    "Sniper": {
-      "min_cpr": 70
-    },
-    "Muscle #1": {
-      "min_cpr": 70
-    },
-    "Enforcer": {
-      "min_cpr": 70
-    },
-    "Muscle #3": {
-      "min_cpr": 70
-    },
-    "Lookout": {
-      "min_cpr": 70
-    },
-    "Muscle #2": {
-      "min_cpr": 70
-    }
-  },
-  "Snow Blind": {
-    "Hustler": {
-      "min_cpr": 70
-    },
-    "Imitator": {
-      "min_cpr": 70
-    },
-    "Muscle #1": {
-      "min_cpr": 70
-    },
-    "Muscle #2": {
-      "min_cpr": 70
-    }
-  },
-  "Gaslight the Way": {
-    "Imitator #3": {
-      "min_cpr": 70
-    },
-    "Imitator #2": {
-      "min_cpr": 70
-    },
-    "Looter #3": {
-      "min_cpr": 70
-    },
-    "Imitator #1": {
-      "min_cpr": 70
-    },
-    "Looter #1": {
-      "min_cpr": 70
-    },
-    "Looter #2": {
-      "min_cpr": 70
-    }
-  },
-  "Market Forces": {
-    "Enforcer": {
-      "min_cpr": 70
-    },
-    "Negotiator": {
-      "min_cpr": 70
-    },
-    "Muscle": {
-      "min_cpr": 70
-    },
-    "Lookout": {
-      "min_cpr": 70
-    },
-    "Arsonist": {
-      "min_cpr": 70
-    }
-  },
-  "Smoke and Wing Mirrors": {
-    "Car Thief": {
-      "min_cpr": 70
-    },
-    "Imitator": {
-      "min_cpr": 70
-    },
-    "Hustler #2": {
-      "min_cpr": 70
-    },
-    "Hustler #1": {
-      "min_cpr": 70
-    }
-  },
-  "Cash Me If You Can": {
-    "Thief #1": {
-      "min_cpr": 70
-    },
-    "Lookout": {
-      "min_cpr": 70
-    },
-    "Thief #2": {
-      "min_cpr": 70
-    }
-  },
-  "Mob Mentality": {
-    "Looter #1": {
-      "min_cpr": 0
-    },
-    "Looter #2": {
-      "min_cpr": 0
-    },
-    "Looter #4": {
-      "min_cpr": 0
-    },
-    "Looter #3": {
-      "min_cpr": 0
+      "min_cpr": 65
     }
   }
 }
